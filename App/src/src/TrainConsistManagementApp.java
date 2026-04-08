@@ -1,3 +1,6 @@
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.LinkedList;
 
 public class TrainConsistManagementApp {
@@ -5,39 +8,22 @@ public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println("UC4 - Maintain Ordered Bogie IDs");
+        System.out.println("UC5 - Preserve Insertion Order of Bogies");
         System.out.println("=====================================\n");
 
-        // Create LinkedList to maintain train order
-        LinkedList<String> trainConsist = new LinkedList<>();
+        Set<String> trainFormation = new LinkedHashSet<>();
 
-        // ---- ADD bogies ----
-        trainConsist.add("Engine");
-        trainConsist.add("Sleeper");
-        trainConsist.add("AC");
-        trainConsist.add("Cargo");
-        trainConsist.add("Guard");
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
+        trainFormation.add("Sleeper");
 
-        System.out.println("Initial Train Consist:");
-        System.out.println(trainConsist);
+        System.out.println("Final Train Formation (No duplicates, order preserved):");
+        System.out.println(trainFormation);
 
-        // ---- INSERT Pantry Car at position 2 ----
-        trainConsist.add(2, "Pantry");
+        System.out.println("\nTotal Bogies: " + trainFormation.size());
 
-        System.out.println("\nAfter Adding Pantry Car at position 2:");
-        System.out.println(trainConsist);
-
-        // ---- REMOVE first and last bogie ----
-        trainConsist.removeFirst();
-        trainConsist.removeLast();
-
-        System.out.println("\nAfter Removing First and Last Bogie:");
-        System.out.println(trainConsist);
-
-        // ---- FINAL OUTPUT ----
-        System.out.println("\nFinal Ordered Train Consist:");
-        System.out.println(trainConsist);
-
-        System.out.println("\nUC4 operations completed successfully...");
+        System.out.println("\nUC5 operations completed successfully...");
     }
 }
