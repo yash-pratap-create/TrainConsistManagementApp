@@ -1,29 +1,46 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
+
+class GoodsBogie {
+    String type;
+    String cargo;
+
+    GoodsBogie(String type, String cargo) {
+        this.type = type;
+        this.cargo = cargo;
+    }
+
+    public String toString() {
+        return type + " -> " + cargo;
+    }
+}
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println("UC11 - Validate Train ID & Cargo Code");
+        System.out.println("UC12 - Safety Compliance Check");
         System.out.println("=====================================\n");
 
-        String trainId = "TRN-1234";
-        String cargoCode = "PET-AB";
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
 
-        Pattern trainPattern = Pattern.compile("TRN-\\d{4}");
-        Pattern cargoPattern = Pattern.compile("PET-[A-Z]{2}");
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Rectangular", "Coal"));
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
 
-        Matcher trainMatcher = trainPattern.matcher(trainId);
-        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
+        boolean isSafe = goodsBogies.stream()
+                .allMatch(b ->
+                        !b.type.equals("Cylindrical") || b.cargo.equals("Petroleum")
+                );
 
-        boolean isTrainValid = trainMatcher.matches();
-        boolean isCargoValid = cargoMatcher.matches();
+        System.out.println("Goods Bogies:");
+        for (GoodsBogie b : goodsBogies) {
+            System.out.println(b);
+        }
 
-        System.out.println("Train ID: " + trainId + " -> " + (isTrainValid ? "Valid" : "Invalid"));
-        System.out.println("Cargo Code: " + cargoCode + " -> " + (isCargoValid ? "Valid" : "Invalid"));
+        System.out.println("\nSafety Status: " + (isSafe ? "SAFE" : "UNSAFE"));
 
-        System.out.println("\nUC11 operations completed successfully...");
+        System.out.println("\nUC12 operations completed successfully...");
     }
 }
