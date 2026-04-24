@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e21c6c9-2a12-4c25-87f3-58a1c633272b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/App/src/main/TrainConsistManagementApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/TrainConsistManagementApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/test/TrainConsistManagementAppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/TrainConsistManagementAppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +48,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/UC16",
+    "git-widget-placeholder": "feature/UC18",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Admin/Documents/RA262/TrainConsistManagementApp",
     "project.structure.last.edited": "Libraries",
