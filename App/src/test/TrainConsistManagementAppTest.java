@@ -2,7 +2,7 @@ package test;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TrainConsisntManagementAppTest {
+public class TrainConsistManagementAppTest {
 
     boolean search(String[] arr, String key) {
         for (String id : arr) {
