@@ -1,10 +1,15 @@
 package test;
+import java.util.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TrainConsistManagementAppTest {
 
     boolean search(String[] arr, String key) {
+        if (arr.length == 0) {
+            throw new IllegalStateException("No bogies available for search");
+        }
+
         for (String id : arr) {
             if (id.equals(key)) {
                 return true;
@@ -14,31 +19,33 @@ public class TrainConsistManagementAppTest {
     }
 
     @Test
-    void testSearch_BogieFound() {
-        String[] arr = {"BG101","BG205","BG309","BG412","BG550"};
-        assertTrue(search(arr, "BG309"));
+    void testSearch_ThrowsExceptionWhenEmpty() {
+        String[] arr = {};
+        assertThrows(IllegalStateException.class, () -> {
+            search(arr, "BG101");
+        });
     }
 
     @Test
-    void testSearch_BogieNotFound() {
-        String[] arr = {"BG101","BG205","BG309","BG412","BG550"};
+    void testSearch_AllowsSearchWhenDataExists() {
+        String[] arr = {"BG101","BG205"};
+        assertDoesNotThrow(() -> search(arr, "BG101"));
+    }
+
+    @Test
+    void testSearch_BogieFoundAfterValidation() {
+        String[] arr = {"BG101","BG205","BG309"};
+        assertTrue(search(arr, "BG205"));
+    }
+
+    @Test
+    void testSearch_BogieNotFoundAfterValidation() {
+        String[] arr = {"BG101","BG205","BG309"};
         assertFalse(search(arr, "BG999"));
     }
 
     @Test
-    void testSearch_FirstElementMatch() {
-        String[] arr = {"BG101","BG205","BG309"};
-        assertTrue(search(arr, "BG101"));
-    }
-
-    @Test
-    void testSearch_LastElementMatch() {
-        String[] arr = {"BG101","BG205","BG550"};
-        assertTrue(search(arr, "BG550"));
-    }
-
-    @Test
-    void testSearch_SingleElementArray() {
+    void testSearch_SingleElementValidCase() {
         String[] arr = {"BG101"};
         assertTrue(search(arr, "BG101"));
     }
